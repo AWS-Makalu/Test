@@ -2,7 +2,6 @@
 # GitHub Action Part 1
 # AWS-Makalu
 #----------------------------------------------------
-defaults:
   
 name: CI_AWS-Makalu
 
