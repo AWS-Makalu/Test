@@ -4,6 +4,9 @@
 #----------------------------------------------------
   
 name: CI_AWS-Makalu
+env:
+  APPLICATION_NAME    : "APPLICATION_NAME"
+  DEPLOY_PACKAGE_NAME : "AWS_Deploy-ver-${{ github.sha }}"
 
 on:
   push:
@@ -16,11 +19,24 @@ jobs:
     steps:
     - name: Print Hello Message
       run: echo "Hello World testing"
-
+      
+    - name: Exec few commands
+      run: |
+        echo "Hello Message 1"  
+        echo "Hello Message 2"  
+        echo "Application name:${{ env.APPLICATION_NAME }}"  
+                
+        
   my_deploy:
     runs-on: ubuntu-latest
+    needs: [my_testing]
     steps:
     - name: Print Hello Message
       run: echo "Hello World deploy"
-
+      
+    - name: Exec few commands
+      run: |
+        echo "Hello Message 1"  
+        echo "Hello Message 2"  
+        echo "Deploy name:${{ env.DEPLOY_PACKAGE_NAME }}"  
 
