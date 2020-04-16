@@ -18,7 +18,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Print Hello Message
-      run : echo "Hello World testing"
+      run : |
+            echo "Hello World testing"
+            START=$(date +%s) # Для времени работы скрипта 
+            TIME=$(date +%F_%H-%M-%S)
+           # DATE_DEPLOY=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+            echo "${TIME}"
       
     - name: GitHub Issue Due Dates Action
       uses: alexleventer/github-issue-due-dates-action@1.0.6
