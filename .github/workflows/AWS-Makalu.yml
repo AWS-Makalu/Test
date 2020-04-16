@@ -36,9 +36,6 @@ jobs:
         echo "Hello Message event_name: ${{ github.event_name }}"  
         echo "Application name:${{ env.DEPLOY_PACKAGE_NAME }}"  
       
-    - name: List corrent dir
-      run : ls -la
-      
     - name: Git Clone my Repo             # CHECKOUT
       uses: actions/checkout@v1
       
@@ -47,8 +44,11 @@ jobs:
 #      run : echo "Status:${{ job.status }}"  # success
 
     - name: Exec few commands
-      run : zip -r 123.zip ./ -x "*.git*"      
-
+      run : zip -r ${{ env.DEPLOY_PACKAGE_NAME }}.zip ./ -x "*.git*"     
+       
+    - name: List corrent dir
+      run : ls -la
+      
     - name: JOB Status
       run : echo "Status:${{ job.status }}"  # success
         
