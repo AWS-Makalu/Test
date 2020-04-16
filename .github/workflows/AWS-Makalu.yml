@@ -6,7 +6,7 @@
 name: CI_AWS-Makalu
 env:
   APPLICATION_NAME    : "APPLICATION_NAME"
-  DEPLOY_PACKAGE_NAME : "AWS_Deploy-ver-${{ date }}"
+  DEPLOY_PACKAGE_NAME : "AWS_Deploy-ver-${{ github.sha }}"
 
 on:
   push:
@@ -20,6 +20,11 @@ jobs:
     - name: Print Hello Message
       run : echo "Hello World testing"
       
+    - name: GitHub Issue Due Dates Action
+      uses: alexleventer/github-issue-due-dates-action@1.0.6
+      with:
+        GH_TOKEN: "${{ secrets.GH_TOKEN }}"     
+   
     - name: Exec few DATE !!!
       run: |
         echo "Hello Message event_name: ${{ github.event_name }}"  
