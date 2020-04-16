@@ -20,9 +20,9 @@ jobs:
     - name: Print Hello Message
       run: echo "Hello World testing"
       
-    - name: Exec few DATE
+    - name: Exec few DATE !!!
       run: |
-        echo "Hello Message 1"  
+        echo "Hello Message event_name: ${{ github.event_name }}"  
         echo "Application name:${{ env.DEPLOY_PACKAGE_NAME }}"  
         
     - name: List corrent dir
