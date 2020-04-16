@@ -42,9 +42,9 @@ jobs:
     - name: Git Clone my Repo             # CHECKOUT
       uses: actions/checkout@v1
       
-    - name: IF             
-      if:  github.event.check_suite.conclusion == 'success'
-      run : echo "Status:${{ job.status }}"  # success
+#    - name: IF             
+#      if:  github.event.check_suite.conclusion == 'success'
+#      run : echo "Status:${{ job.status }}"  # success
       
     - name: JOB Status
       run : echo "Status:${{ job.status }}"  # success
