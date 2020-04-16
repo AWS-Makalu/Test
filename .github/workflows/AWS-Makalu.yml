@@ -18,7 +18,7 @@ on:                                       # Когда срабатывать
   
 jobs:
   JOB_Testing:                            # Test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest                # Выполнить в контейнере Linux
     steps:
     - name: Print Hello Message           # Print
       run : |
@@ -28,7 +28,7 @@ jobs:
             curl -s -X POST \
             https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage \
             -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
-            -d text="Push Master:${TIME}"
+            -d text="💥 ✅ ❌ 🍒🍓☘🌹💚Push Master:${TIME}"
 
     - name: Exec few DATE !!!
       run: |
@@ -42,10 +42,10 @@ jobs:
       uses: actions/checkout@v1
       
     - name: JOB Status
-      run : echo "---${{ job.status }}"  # success
+      run : echo "Status:${{ job.status }}"  # success
         
   JOB_Deploy:                             # Deploy
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest                # Выполнить в контейнере Linux
     needs:   [JOB_Testing]                # Выполнить только если прошло  задание JOB_Testing
     steps:
     - name:  Print Hello Message
