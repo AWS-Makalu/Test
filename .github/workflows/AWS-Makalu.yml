@@ -36,7 +36,7 @@ jobs:
         echo "Application name:${{ env.DEPLOY_PACKAGE_NAME }}"  
       
     - name: List corrent dir
-      run : 11ls -la
+      run : ls -la
       
     - name: Git Clone my Repo             # CHECKOUT
       uses: actions/checkout@v1
