@@ -22,14 +22,8 @@ jobs:
             echo "Hello World testing"
             START=$(date +%s) # Для времени работы скрипта 
             TIME=$(date +%F_%H-%M-%S)
-           # DATE_DEPLOY=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
             echo "${TIME}"
       
-    - name: GitHub Issue Due Dates Action
-      uses: alexleventer/github-issue-due-dates-action@1.0.6
-      with:
-        GH_TOKEN: "${{ secrets.GH_TOKEN }}"     
-   
     - name: Exec few DATE !!!
       run: |
         echo "Hello Message event_name: ${{ github.event_name }}"  
