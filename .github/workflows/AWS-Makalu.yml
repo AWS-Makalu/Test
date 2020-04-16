@@ -8,7 +8,6 @@ name: CI_AWS-Makalu
 env:
   APPLICATION_NAME    : "APPLICATION_NAME"
   DEPLOY_PACKAGE_NAME : "AWS_Deploy-ver-${{ github.sha }}"
-  IMAGE_NAME: runner
 
 on:
   push:
@@ -24,7 +23,6 @@ jobs:
             echo "Hello World testing"
             TIME=$(date +%F_%H-%M-%S)
             echo "${TIME}"
-            echo "Name:${{ env.IMAGE_NAME }}"  
       
     - name: Exec few DATE !!!
       run: |
