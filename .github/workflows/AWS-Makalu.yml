@@ -18,12 +18,12 @@ jobs:
   my_testing:
     runs-on: ubuntu-latest
     steps:
-    - name: Print Hello Message
+    - name: Print Hello Message # 1
       run : |
             echo "Hello World testing"
             TIME=$(date +%F_%H-%M-%S)
             echo "${TIME}"
-      
+ # 2     
     - name: Exec few DATE !!!
       run: |
         echo "Hello Message event_name: ${{ github.event_name }}"  
