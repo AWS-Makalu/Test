@@ -6,7 +6,7 @@
 name: CI_AWS-Makalu
 env:
   APPLICATION_NAME    : "APPLICATION_NAME"
-  DEPLOY_PACKAGE_NAME : "AWS_Deploy-ver-${{ github.date }}"
+  DEPLOY_PACKAGE_NAME : "AWS_Deploy-ver-${{ github.sha }}"
 
 on:
   push:
@@ -44,6 +44,5 @@ jobs:
     - name: Exec few commands
       run: |
         echo "Hello Message 1"  
-        echo "Hello Message 2"  
         echo "Deploy name:${{ env.DEPLOY_PACKAGE_NAME }}"  
 
