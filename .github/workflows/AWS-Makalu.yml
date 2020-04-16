@@ -36,14 +36,13 @@ jobs:
         echo "Application name:${{ env.DEPLOY_PACKAGE_NAME }}"  
       
     - name: List corrent dir
-      run : ls -la
+      run : 11ls -la
       
     - name: Git Clone my Repo             # CHECKOUT
       uses: actions/checkout@v1
       
-    - name: List corrent dir
-#      run : ls -la     
-      run : echo "---${{ job.status }}"
+    - name: JOB Status
+      run : echo "---${{ job.status }}"  # success
         
   JOB_Deploy:                             # Deploy
     runs-on: ubuntu-latest
