@@ -20,12 +20,10 @@ jobs:
     - name: Print Hello Message
       run: echo "Hello World testing"
       
-    - name: Exec few commands
+    - name: Exec few DATE
       run: |
         echo "Hello Message 1"  
-        echo "Hello Message 2"  
-        echo "Application name:${{ env.APPLICATION_NAME }}"  
-        echo "Application name:${{ env.APPLICATION_NAME }}"  
+        echo "Application name:${{ env.DEPLOY_PACKAGE_NAME }}"  
         
     - name: List corrent dir
       run : ls -la
