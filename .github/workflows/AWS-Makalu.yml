@@ -6,7 +6,7 @@
 name: CI_AWS-Makalu
 env:
   APPLICATION_NAME    : "APPLICATION_NAME"
-  DEPLOY_PACKAGE_NAME : "AWS_Deploy-ver-${{ github.sha }}"
+  DEPLOY_PACKAGE_NAME : "AWS_Deploy-ver-${{ github.date }}"
 
 on:
   push:
@@ -25,12 +25,13 @@ jobs:
         echo "Hello Message 1"  
         echo "Hello Message 2"  
         echo "Application name:${{ env.APPLICATION_NAME }}"  
+        echo "Application name:${{ env.APPLICATION_NAME }}"  
         
     - name: List corrent dir
       run : ls -la
       
-    - name: Git Clone my Repo
-      uses: action/checkout@v1
+ #   - name: Git Clone my Repo
+ #     uses: action/checkout@v1
       
     - name: List corrent dir
       run : ls -la             
