@@ -53,8 +53,6 @@ jobs:
     runs-on: ubuntu-latest                # Выполнить в контейнере Linux
     needs:   [JOB_Testing]                # Выполнить только если прошло  задание JOB_Testing
     steps:
-    - name:  Print Hello Message
-      run:   echo "Hello World deploy"
       
     - name:  Exec few commands
       run: |
@@ -62,5 +60,6 @@ jobs:
         TIME=$(date +%F_%H-%M-%S)
         echo "Deploy name:${TIME}_ALL_OK"  
 
-
+    - name: Exec few commands
+      run : zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
 
