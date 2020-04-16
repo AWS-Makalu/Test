@@ -49,6 +49,5 @@ jobs:
       run: |
         echo "---Deploy---"  
         TIME=$(date +%F_%H-%M-%S)
-#        echo "${TIME}"
         echo "Deploy name:${TIME}_ALL_OK"  
 
