@@ -18,13 +18,13 @@ jobs:
   my_testing:                            # Test
     runs-on: ubuntu-latest
     steps:
-    - name: Print Hello Message # 1
+    - name: Print Hello Message          # Print
       run : |
             echo "Hello World testing"
             TIME=$(date +%F_%H-%M-%S)
             echo "${TIME}"
-            DEPLOY_PACKAGE_NAME = ${TIME}
-     
+            curl -s -X POST https://api.telegram.org/bot1082481725:AAEraZTXO5Wjq4tYmT0O68KWlgUpsn0coa0/sendMessage -d chat_id=954432616 -d text="Hello World777"
+
     - name: Exec few DATE !!!
       run: |
         echo "Hello Message event_name: ${{ github.event_name }}"  
