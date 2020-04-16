@@ -28,8 +28,8 @@ jobs:
     - name: List corrent dir
       run : ls -la
       
- #   - name: Git Clone my Repo
- #     uses: action/checkout@v1
+    - name: Git Clone my Repo
+      uses: actions/checkout@v1
       
     - name: List corrent dir
       run : ls -la             
