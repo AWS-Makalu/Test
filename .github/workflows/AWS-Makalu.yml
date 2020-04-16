@@ -53,7 +53,6 @@ jobs:
     runs-on: ubuntu-latest                # Выполнить в контейнере Linux
     needs:   [JOB_Testing]                # Выполнить только если прошло  задание JOB_Testing
     steps:
-      
     - name:  Exec few commands
       run: |
         echo "---Deploy---"  
@@ -61,5 +60,5 @@ jobs:
         echo "Deploy name:${TIME}_ALL_OK"  
 
     - name: Exec few commands
-      run : zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
+      run : zip -r ${{ env.DEPLOY_PACKAGE_NAME }}.zip ./ -x *.git*
 
