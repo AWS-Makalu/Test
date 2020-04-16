@@ -9,21 +9,21 @@ env:
   APPLICATION_NAME    : "APPLICATION_NAME"
   DEPLOY_PACKAGE_NAME : "AWS_Deploy-ver-${{ github.sha }}"
 
-on:
+on:                                       # Когда срабатывать
   push:
     branches: 
-      - master
+      - master                            # Ветка
   
 jobs:
-  my_testing:                            # Test
+  JOB_Testing:                            # Test
     runs-on: ubuntu-latest
     steps:
-    - name: Print Hello Message          # Print
+    - name: Print Hello Message           # Print
       run : |
-            echo "Hello World testing"
             TIME=$(date +%F_%H-%M-%S)
             echo "${TIME}"
-            curl -s -X POST https://api.telegram.org/bot1082481725:AAEraZTXO5Wjq4tYmT0O68KWlgUpsn0coa0/sendMessage -d chat_id=954432616 -d text="Hello World777"
+            echo "Hello World testing:${TIME}"
+            curl -s -X POST https://api.telegram.org/bot1082481725:AAEraZTXO5Wjq4tYmT0O68KWlgUpsn0coa0/sendMessage -d chat_id=954432616 -d text="push master:${TIME}"
 
     - name: Exec few DATE !!!
       run: |
@@ -33,15 +33,15 @@ jobs:
     - name: List corrent dir
       run : ls -la
       
-    - name: Git Clone my Repo
+    - name: Git Clone my Repo             # CHECKOUT
       uses: actions/checkout@v1
       
     - name: List corrent dir
       run : ls -la             
         
-  my_deploy:                             # Deploy
+  JOB_Deploy:                             # Deploy
     runs-on: ubuntu-latest
-    needs:   [my_testing]
+    needs:   [JOB_Testing]                # Выполнить только если прошло  задание JOB_Testing
     steps:
     - name:  Print Hello Message
       run:   echo "Hello World deploy"
