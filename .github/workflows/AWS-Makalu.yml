@@ -4,9 +4,6 @@
 #----------------------------------------------------
   
 name: CI_AWS-Makalu
-
-  TIME=$(date +%F_%H-%M-%S)
-  echo "${TIME}"
   
 env:
   APPLICATION_NAME    : "APPLICATION_NAME"
