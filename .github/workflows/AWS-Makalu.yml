@@ -20,7 +20,7 @@ jobs:
     - name: Print Hello Message
       run : |
             echo "Hello World testing"
-            START=$(date +%s) # Для времени работы скрипта 
+#            START=$(date +%s) # Для времени работы скрипта 
             TIME=$(date +%F_%H-%M-%S)
             echo "${TIME}"
       
