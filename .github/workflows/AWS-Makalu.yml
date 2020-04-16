@@ -15,7 +15,7 @@ on:
       - master
   
 jobs:
-  my_testing:
+  my_testing:                            # Test
     runs-on: ubuntu-latest
     steps:
     - name: Print Hello Message # 1
@@ -23,7 +23,8 @@ jobs:
             echo "Hello World testing"
             TIME=$(date +%F_%H-%M-%S)
             echo "${TIME}"
- # 2     
+            DEPLOY_PACKAGE_NAME = ${TIME}
+     
     - name: Exec few DATE !!!
       run: |
         echo "Hello Message event_name: ${{ github.event_name }}"  
@@ -38,7 +39,7 @@ jobs:
     - name: List corrent dir
       run : ls -la             
         
-  my_deploy:
+  my_deploy:                             # Deploy
     runs-on: ubuntu-latest
     needs:   [my_testing]
     steps:
