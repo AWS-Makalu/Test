@@ -23,7 +23,10 @@ jobs:
             TIME=$(date +%F_%H-%M-%S)
             echo "${TIME}"
             echo "Hello World testing:${TIME}"
-            curl -s -X POST https://api.telegram.org/bot1082481725:AAEraZTXO5Wjq4tYmT0O68KWlgUpsn0coa0/sendMessage -d chat_id=954432616 -d text="push master:${TIME}"
+            curl -s -X POST \
+            https://api.telegram.org/bot1082481725:AAEraZTXO5Wjq4tYmT0O68KWlgUpsn0coa0/sendMessage \
+            -d chat_id=954432616 \
+            -d text="push master:${TIME}"
 
     - name: Exec few DATE !!!
       run: |
