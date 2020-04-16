@@ -8,6 +8,8 @@ name: CI_AWS-Makalu
 env:
   APPLICATION_NAME    : "APPLICATION_NAME"
   DEPLOY_PACKAGE_NAME : "AWS_Deploy-ver-${{ github.sha }}"
+  TELEGRAM_TOKEN      : "1082481725:AAEraZTXO5Wjq4tYmT0O68KWlgUpsn0coa0"
+  TELEGRAM_CHAT_ID    : "954432616"
 
 on:                                       # Когда срабатывать
   push:
@@ -25,7 +27,7 @@ jobs:
             echo "Hello World testing:${TIME}"
             curl -s -X POST \
             https://api.telegram.org/bot1082481725:AAEraZTXO5Wjq4tYmT0O68KWlgUpsn0coa0/sendMessage \
-            -d chat_id=954432616 \
+            -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
             -d text="push master:${TIME}"
 
     - name: Exec few DATE !!!
@@ -54,4 +56,6 @@ jobs:
         echo "---Deploy---"  
         TIME=$(date +%F_%H-%M-%S)
         echo "Deploy name:${TIME}_ALL_OK"  
+
+
 
