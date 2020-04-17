@@ -23,7 +23,7 @@ jobs:
     steps:
     - name: Print Hello Message           # Print
       run : |
-            TIME=$(date "+%d.%m.%Y_%H:%M:%S")
+            TIME=$(TZ=MSK-3 date "+%d.%m.%Y_%H:%M:%S")
             echo "${TIME}"
             echo "Hello World testing:${TIME}"
             curl -s -X POST \
