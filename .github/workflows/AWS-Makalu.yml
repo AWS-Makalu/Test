@@ -3,7 +3,7 @@
 # AWS-Makalu
 # 💥 ✅ ❌ 🍒🍓☘🌹💚
 #----------------------------------------------------
-  
+#            TIME=$(date +%F-%H:%M:%S)  
 name: CI_AWS-Makalu
   
 env:
@@ -23,7 +23,7 @@ jobs:
     steps:
     - name: Print Hello Message           # Print
       run : |
-            TIME=$(date +%F-%H:%M:%S)
+            TIME=$(+%d.%m.%Y %H:%M:%S)
             echo "${TIME}"
             echo "Hello World testing:${TIME}"
             curl -s -X POST \
