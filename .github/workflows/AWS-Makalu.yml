@@ -3,7 +3,7 @@
 # AWS-Makalu
 # 💥 ✅ ❌ 🍒🍓☘🌹💚
 #----------------------------------------------------
-#            TIME=$(date +%F-%H:%M:%S)  
+# 
 name: CI_AWS-Makalu
   
 env:
@@ -38,7 +38,7 @@ jobs:
       
     - name: Git Clone my Repo             # CHECKOUT
       uses: actions/checkout@v1
-      
+
 #    - name: IF             
 #      if:  github.event.check_suite.conclusion == 'success'
 #      run : echo "Status:${{ job.status }}"  # success
@@ -59,7 +59,7 @@ jobs:
     - name:  Exec few commands
       run: |
         echo "---Deploy---"  
-        TIME=$(date +%F_%H-%M-%S)
+        TIME=$(date "+%d.%m.%Y %H:%M:%S")
         echo "Deploy name:${TIME}_ALL_OK"  
 
 
