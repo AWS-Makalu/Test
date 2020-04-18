@@ -29,19 +29,19 @@ jobs:
     - name: List corrent dir
       run : |
             ls -la
+            printf "\033[1;32m  ✔ Status\033[0m \n"
             echo "Status:${{ job.status }}"   # success
-            printf "\033[1;32m  ✔ Боевой режим\033[0m \n"
      
     - name: If error                      # Если предыдущий шаг с ошибкой - выполнить
       if  : failure()   
       run : |
             TIME=$(TZ=MSK-3 date "+%d.%m.%Y_%H:%M:%S")
-            echo "${TIME}"
+            echo "🍒🍓🌹${TIME}🍒🍓🌹"
             echo "Hello World testing:${TIME}"
             curl -s -X POST \
             https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage \
             -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
-            -d text="❌ Err Master🍒: ${TIME}" 
+            -d text="❌ Err Master🍒:\r\n ${TIME}" 
         
   JOB_CD:                                 # Deploy
     runs-on: ubuntu-latest                # Выполнить в контейнере Linux
