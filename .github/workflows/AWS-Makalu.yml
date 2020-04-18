@@ -28,7 +28,7 @@ jobs:
        
     - name: List corrent dir
       run : |
-            ls -9la
+            ls -la
             echo "Status:${{ job.status }}"   # success
      
     - name: If error                      # Если предыдущий шаг с ошибкой - выполнить
