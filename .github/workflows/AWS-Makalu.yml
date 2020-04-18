@@ -47,7 +47,9 @@ jobs:
       run : zip -r ${{ env.DEPLOY_PACKAGE_NAME }}.zip ./ -x "*.git*"     
        
     - name: List corrent dir
-      run : ls -9la
+      run : |
+       ls -9la
+       echo "Status:${{ step.status }}"  # success
       
     - name: JOB Status
       run : echo "Status:${{ job.status }}"  # success
