@@ -30,11 +30,6 @@ jobs:
             https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage \
             -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
             -d text="☘ Push Master: ${TIME}" 
-
-    - name: Exec few DATE !!!
-      run: |
-        echo "Hello Message event_name: ${{ github.event_name }}"  
-        echo "Application name:${{ env.DEPLOY_PACKAGE_NAME }}"  
       
     - name: Git Clone my Repo             # CHECKOUT
       uses: actions/checkout@v1
@@ -49,7 +44,7 @@ jobs:
     - name: List corrent dir
       run : |
        ls -9la
-       echo "Status:${{ step.status }}"  # success
+       echo "Status:${{ job.status }}"  # success
       
     - name: JOB Status
       run : echo "Status:${{ job.status }}"  # success
