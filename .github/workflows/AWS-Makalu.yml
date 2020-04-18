@@ -28,8 +28,9 @@ jobs:
        
     - name: List corrent dir
       run : |
-            ls -9la
+            ls -la
             echo "Status:${{ job.status }}"   # success
+            printf "\033[1;32m  ✔ Боевой режим\033[0m \n"
      
     - name: If error                      # Если предыдущий шаг с ошибкой - выполнить
       if  : failure()   
