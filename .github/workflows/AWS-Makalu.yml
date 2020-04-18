@@ -23,8 +23,8 @@ jobs:
     - name: Git Clone my Repo             # CHECKOUT
       uses: actions/checkout@v1
 
-    - name: Exec few commands
-      run : 1zip -r ${{ env.DEPLOY_PACKAGE_NAME }}.zip ./ -x "*.git*"     
+    - name: ALL ZIP
+      run : zip -r ${{ env.DEPLOY_PACKAGE_NAME }}.zip ./ -x "*.git*"     
        
     - name: List corrent dir
       run : |
