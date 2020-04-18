@@ -45,13 +45,20 @@ jobs:
       run : |
        ls -la
        echo "Status:${{ job.status }}"   # success
-       
-    - name: FOR ERR                      # Если предыдущий шаг с ошибкой - выполнить
-      if: failure()   
-      run : echo "ERR" 
-    
+
     - name: JOB Status
       run : echo "Status:${{ job.status }}"  # success
+      
+    - name: FOR ERR                      # Если предыдущий шаг с ошибкой - выполнить
+      if  : failure()   
+      run : |
+            TIME=$(TZ=MSK-3 date "+%d.%m.%Y_%H:%M:%S")
+            echo "${TIME}"
+            echo "Hello World testing:${TIME}"
+            curl -s -X POST \
+            https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage \
+            -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
+            -d text="❌ err: ${TIME}" 
         
   JOB_Deploy:                             # Deploy
     runs-on: ubuntu-latest                # Выполнить в контейнере Linux
