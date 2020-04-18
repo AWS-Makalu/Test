@@ -39,14 +39,14 @@ jobs:
 #      run : echo "Status:${{ job.status }}"  # success
 
     - name: Exec few commands
-      run : zip -r ${{ env.DEPLOY_PACKAGE_NAME }}.zip ./ -x "*.git*"     
+      run : 1zip -r ${{ env.DEPLOY_PACKAGE_NAME }}.zip ./ -x "*.git*"     
        
     - name: List corrent dir
       run : |
        ls -la
-       echo "Status:${{ job.status }}"  # success
+       echo "Status:${{ job.status }}"   # success
        
-    - name: FOR ERR
+    - name: FOR ERR                      # Если предыдущий шаг с ошибкой - выполнить
       if: failure()   
       run : echo "ERR" 
     
