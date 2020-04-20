@@ -16,7 +16,7 @@ env:
   DEPLOY_PACKAGE_NAME : "AWS_Deploy-ver-${{ github.sha }}"
   TELEGRAM_TOKEN      : "1082481725:AAEraZTXO5Wjq4tYmT0O68KWlgUpsn0coa0"
   TELEGRAM_CHAT_ID    : "954432616"
-  DATE_GIT            :  $(TZ=MSK-3 date \"+%d.%m.%Y_%H:%M:%S\")
+  DATE_GIT            :  $(TZ=MSK-3 date '+%d.%m.%Y_%H:%M:%S'")
 
 on:                                             # Когда срабатывать
   push:
