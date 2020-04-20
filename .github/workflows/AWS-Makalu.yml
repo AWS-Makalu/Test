@@ -25,11 +25,11 @@ jobs:
       uses: actions/checkout@v1
 
     - name: 🍒ALL ZIP
-      run : 1zip -r ${{ env.DEPLOY_PACKAGE_NAME }}.zip ./ -x "*.git*"     
+      run : zip -r ${{ env.DEPLOY_PACKAGE_NAME }}.zip ./ -x "*.git*"     
        
     - name: 🍒List corrent dir
       run : |
-            ls -la
+            ls -11la
             printf "\033[1;32m  ✔ Status\033[0m \n"
             echo "Status:🍒${{ job.status }}"   # success
      
