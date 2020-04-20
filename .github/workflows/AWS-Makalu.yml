@@ -16,7 +16,6 @@ env:
   DEPLOY_PACKAGE_NAME : "AWS_Deploy-ver-${{ github.sha }}"
   TELEGRAM_TOKEN      : "1082481725:AAEraZTXO5Wjq4tYmT0O68KWlgUpsn0coa0"
   TELEGRAM_CHAT_ID    : "954432616"
-  DATE_GIT            :  $(TZ=MSK-3 date '+%d.%m.%Y_%H:%M:%S'")
 
 on:                                             # Когда срабатывать
   push:
@@ -35,9 +34,8 @@ jobs:
     - name  : 🍒List corrent dir
       run   : |
                 ls -la
-                printf "\033[1;32m  ✔ Status\033[0m \n"
+                printf "🍒\033[1;32m  ✔ Status:${{ job.status }}\033[0m \n"
                 echo "Status:🍒${{ job.status }}" 
-                echo "Status:🍒${{ env.DATE_GIT }}"  
      
     - name  : 🍒If error JOB_CI                 # Выполнить только если Error
       if    : failure()   
