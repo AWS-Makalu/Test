@@ -39,7 +39,7 @@ jobs:
     - name  : 🍒If error JOB_CI                 # Выполнить только если Error
       if    : failure()   
       run   : |
-                TIME=$(TZ=MSK-3 date "+%d.%m.%Y_%H:%M:%S")
+                TIME=$(TZ=MSK-3 date "+%d.%m.%Y_%H:%M:%S") # Формируем дату время
                 echo "🍒 ${TIME}🍒"
                 curl -s -X POST \
                 https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage \
@@ -49,14 +49,12 @@ jobs:
     - name  : 🍒If All Ok JOB_CI                # Выполнить только если ОК
       if    : success()   
       run   : |
-                TIME=$(TZ=MSK-3 date "+%d.%m.%Y_%H:%M:%S")
+                TIME=$(TZ=MSK-3 date "+%d.%m.%Y_%H:%M:%S") # Формируем дату время
                 echo "🍒 ${TIME}🍒"
                 curl -s -X POST \
                 https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage \
                 -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
                 -d text="☘ OK JOB_CI 🍒%0A ${TIME}" 
-                docker ps -q | xargs  docker stats --no-stream 
-                 
         
   JOB_CD    :                                   # Deploy to AWS
     runs-on : ubuntu-latest                     # Выполнить в контейнере Linux
@@ -64,7 +62,7 @@ jobs:
     steps   :
     - name  : Deploy                            
       run   : |
-                TIME=$(TZ=MSK-3 date "+%d.%m.%Y_%H:%M:%S")
+                TIME=$(TZ=MSK-3 date "+%d.%m.%Y_%H:%M:%S") # Формируем дату время
                 echo "🍒 ${TIME}🍒"
                 curl -s -X POST \
                 https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage \
