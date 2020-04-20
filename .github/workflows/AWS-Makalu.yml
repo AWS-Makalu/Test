@@ -3,8 +3,9 @@
 # AWS-Makalu
 # 💥 ✅ ❌ 🍒🍓☘🌹💚
 # 👨‍🎓👨‍🏫👨‍🔬👨‍🔧👌👨☯☯👌👨☝✌‍✔️❌
-# AAA=$(printf "✔ Status\n")
+# AAA=$(printf "✔ Status\n") # Форматирование
 # IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/${IMAGE_NAME}
+# $ docker ps -q | xargs  docker stats --no-stream # использование памяти и CPU всех Docker
 #----------------------------------------------------
 
 name: CI_AWS-Makalu
@@ -31,44 +32,41 @@ jobs:
        
     - name  : 🍒List corrent dir
       run   : |
-            ls -la
-            printf "\033[1;32m  ✔ Status\033[0m \n"
-            echo "Status:🍒${{ job.status }}"  
+                ls -la
+                printf "\033[1;32m  ✔ Status\033[0m \n"
+                echo "Status:🍒${{ job.status }}"  
      
-    - name  : 🍒If error JOB_CI                 # Если предыдущий шаг с ошибкой - выполнить
+    - name  : 🍒If error JOB_CI                 # Выполнить только если Error
       if    : failure()   
       run   : |
-              TIME=$(TZ=MSK-3 date "+%d.%m.%Y_%H:%M:%S")
-              echo "🍒 ${TIME}🍒"
-              echo "Hello World testing:${TIME}"
-              curl -s -X POST \
-              https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage \
-              -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
-              -d text="❌ Err Master JOB_CI 🍒%0A ${TIME}" 
+                TIME=$(TZ=MSK-3 date "+%d.%m.%Y_%H:%M:%S")
+                echo "🍒 ${TIME}🍒"
+                curl -s -X POST \
+                https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage \
+                -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
+                -d text="❌ Err Master JOB_CI 🍒%0A ${TIME}" 
              
-    - name  : 🍒If All Ok JOB_CI                # Все ОК
+    - name  : 🍒If All Ok JOB_CI                # Выполнить только если ОК
       if    : success()   
       run   : |
-              TIME=$(TZ=MSK-3 date "+%d.%m.%Y_%H:%M:%S")
-              echo "🍒 ${TIME}🍒"
-              echo "Hello World testing:${TIME}"
-              curl -s -X POST \
-              https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage \
-              -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
-              -d text="☘ OK JOB_CI 🍒%0A ${TIME} ${AAA}" 
+                TIME=$(TZ=MSK-3 date "+%d.%m.%Y_%H:%M:%S")
+                echo "🍒 ${TIME}🍒"
+                curl -s -X POST \
+                https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage \
+                -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
+                -d text="☘ OK JOB_CI 🍒%0A ${TIME} ${AAA}" 
         
-  JOB_CD    :                                   # Deploy
+  JOB_CD    :                                   # Deploy to AWS
     runs-on : ubuntu-latest                     # Выполнить в контейнере Linux
-    needs   :  [JOB_CI]                         # Выполнить только если прошло  задание JOB_Testing
+    needs   : [JOB_CI]                          # Выполнить только если задании JOB_CI success
     steps   :
-    - name  : Deploy                            # Deploy
+    - name  : Deploy                            
       run   : |
-              TIME=$(TZ=MSK-3 date "+%d.%m.%Y_%H:%M:%S")
-              echo "${TIME}"
-              echo "Hello World testing:${TIME}"
-              curl -s -X POST \
-              https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage \
-              -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
-              -d text="☘ Push AWS🍒%0A ${TIME}" 
+                TIME=$(TZ=MSK-3 date "+%d.%m.%Y_%H:%M:%S")
+                echo "🍒 ${TIME}🍒"
+                curl -s -X POST \
+                https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage \
+                -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
+                -d text="☘ Push AWS🍒%0A ${TIME}" 
 
 
