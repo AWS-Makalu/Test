@@ -18,10 +18,10 @@ on:                                       # Когда срабатывать
     branches: 
       - master                            # Ветка
 jobs:
-  JOB_CI:                                 # Test
-    runs-on: ubuntu-latest                # Выполнить в контейнере Linux
+  JOB_CI:                                       # Test
+    runs-on: ubuntu-latest                      # Выполнить в контейнере Linux
     steps:
-    - name: 🍒Git Clone my Repo           # CHECKOUT
+    - name: 🍒Git Clone my Repo                 # CHECKOUT
       uses: actions/checkout@v1
 
     - name: 🍒ALL ZIP
@@ -29,7 +29,7 @@ jobs:
        
     - name: 🍒List corrent dir
       run : |
-            1ls -la
+            ls -la
             printf "\033[1;32m  ✔ Status\033[0m \n"
             echo "Status:🍒${{ job.status }}"   # success
      
@@ -47,16 +47,14 @@ jobs:
     - name: 🍒If All Ok JOB_CI                   # Все ОК
       if  : success()   
       run : |
+            AAA=printf "\033[1;32m  ✔ Status\033[0m \n"
             TIME=$(TZ=MSK-3 date "+%d.%m.%Y_%H:%M:%S")
             echo "🍒 ${TIME}🍒"
             echo "Hello World testing:${TIME}"
             curl -s -X POST \
             https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage \
             -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
-            -d text="❌ --- Master JOB_CI 🍒%0A ${TIME}" 
-             
-             
-             
+            -d text="☘ OK JOB_CI 🍒%0A ${TIME} ${AAA}" 
         
   JOB_CD:                                 # Deploy
     runs-on: ubuntu-latest                # Выполнить в контейнере Linux
@@ -70,6 +68,6 @@ jobs:
             curl -s -X POST \
             https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage \
             -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
-            -d text="☘ Push Master🍒%0A ${TIME}" 
+            -d text="☘ Push AWS🍒%0A ${TIME}" 
 
 
