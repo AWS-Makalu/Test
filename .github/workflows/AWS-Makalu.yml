@@ -56,6 +56,6 @@ jobs:
             curl -s -X POST \
             https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage \
             -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
-            -d text="☘ Push Master🍒 ${TIME}" 
+            -d text="☘ Push Master\n🍒 ${TIME}" 
 
 
