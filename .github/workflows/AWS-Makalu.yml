@@ -18,10 +18,10 @@ on:                                       # Когда срабатывать
     branches: 
       - master                            # Ветка
 jobs:
-  JOB_CI:                            # Test
+  JOB_CI:                                 # Test
     runs-on: ubuntu-latest                # Выполнить в контейнере Linux
     steps:
-    - name: 🍒Git Clone my Repo             # CHECKOUT
+    - name: 🍒Git Clone my Repo           # CHECKOUT
       uses: actions/checkout@v1
 
     - name: 🍒ALL ZIP
@@ -29,11 +29,11 @@ jobs:
        
     - name: 🍒List corrent dir
       run : |
-            ls -11la
+            1ls -la
             printf "\033[1;32m  ✔ Status\033[0m \n"
             echo "Status:🍒${{ job.status }}"   # success
      
-    - name: 🍒If error                      # Если предыдущий шаг с ошибкой - выполнить
+    - name: 🍒If error JOB_CI                   # Если предыдущий шаг с ошибкой - выполнить
       if  : failure()   
       run : |
             TIME=$(TZ=MSK-3 date "+%d.%m.%Y_%H:%M:%S")
@@ -42,11 +42,11 @@ jobs:
             curl -s -X POST \
             https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage \
             -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
-            -d text="❌ Err Master🍒%0A ${TIME}" 
+            -d text="❌ Err Master JOB_CI 🍒%0A ${TIME}" 
         
   JOB_CD:                                 # Deploy
     runs-on: ubuntu-latest                # Выполнить в контейнере Linux
-    needs:  [JOB_CI]                     # Выполнить только если прошло  задание JOB_Testing
+    needs:  [JOB_CI]                      # Выполнить только если прошло  задание JOB_Testing
     steps:
     - name: Deploy                        # Deploy
       run : |
