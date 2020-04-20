@@ -47,7 +47,7 @@ jobs:
     - name: 🍒If All Ok JOB_CI                   # Все ОК
       if  : success()   
       run : |
-            AAA=printf "\033[1;32m  ✔ Status\033[0m \n"
+            AAA=$(printf "\033[1;32m  ✔ Status\033[0m \n")
             TIME=$(TZ=MSK-3 date "+%d.%m.%Y_%H:%M:%S")
             echo "🍒 ${TIME}🍒"
             echo "Hello World testing:${TIME}"
