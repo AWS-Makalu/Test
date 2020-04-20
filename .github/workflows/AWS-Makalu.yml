@@ -16,7 +16,7 @@ env:
   DEPLOY_PACKAGE_NAME : "AWS_Deploy-ver-${{ github.sha }}"
   TELEGRAM_TOKEN      : "1082481725:AAEraZTXO5Wjq4tYmT0O68KWlgUpsn0coa0"
   TELEGRAM_CHAT_ID    : "954432616"
-  DATE_GIT            :  "${ GIT_AUTHOR_DATE }"
+  DATE_GIT            :  $(TZ=MSK-3 date \"+%d.%m.%Y_%H:%M:%S\")
 
 on:                                             # Когда срабатывать
   push:
@@ -47,7 +47,7 @@ jobs:
                 curl -s -X POST \
                 https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage \
                 -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
-                -d text="❌ Err Master JOB_CI 🍒%0A ${TIME}" 
+                -d text="❌ Err JOB_CI 🍒%0A ${TIME}" 
              
     - name  : 🍒If All Ok JOB_CI                # Выполнить только если ОК
       if    : success()   
