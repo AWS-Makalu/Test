@@ -12,7 +12,7 @@ name: CI_AWS-Makalu
   
 env:
   APPLICATION_NAME    : "APPLICATION_NAME"
-  DEPLOY_PACKAGE_NAME : "AWS_Deploy-ver-${{ github.sha }}---${{ echo \"777\" }} "
+  DEPLOY_PACKAGE_NAME : "AWS_Deploy-ver-${{ github.sha }}---${{ echo '777' }} "
   TELEGRAM_TOKEN      : "1082481725:AAEraZTXO5Wjq4tYmT0O68KWlgUpsn0coa0"
   TELEGRAM_CHAT_ID    : "954432616"
 
