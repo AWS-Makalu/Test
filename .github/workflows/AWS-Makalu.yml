@@ -34,8 +34,7 @@ jobs:
     - name  : 🍒List corrent dir
       run   : |
                 ls -la
-                printf "🍒\033[1;32m  ✔ Status:${{ job.status }}\033[0m \n"
-                echo "Status:🍒${{ job.status }}" 
+                printf "🍒\033[1;32m Status:${{ job.status }}\033[0m \n"
      
     - name  : 🍒If error JOB_CI                 # Выполнить только если Error
       if    : failure()   
