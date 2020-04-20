@@ -2,6 +2,7 @@
 # GitHub Action Part 1
 # AWS-Makalu
 # 💥 ✅ ❌ 🍒🍓☘🌹💚
+# 👨‍🎓👨‍🏫👨‍🔬👨‍🔧👌👨☯☯👌👨☝✌‍✔️❌
 #----------------------------------------------------
 # IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/${IMAGE_NAME}
 name: CI_AWS-Makalu
@@ -30,7 +31,7 @@ jobs:
       run : |
             ls -la
             printf "\033[1;32m  ✔ Status\033[0m \n"
-            echo "Status:🍒🍓🌹${{ job.status }}"   # success
+            echo "Status:🍒🍓🌹 👨‍🎓👨‍🏫👨‍🔬👨‍🔧👌👨☯☯👌👨☝✌‍✔️❌ ${{ job.status }}"   # success
      
     - name: 🍒If error                      # Если предыдущий шаг с ошибкой - выполнить
       if  : failure()   
