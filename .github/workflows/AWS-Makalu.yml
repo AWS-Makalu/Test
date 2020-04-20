@@ -25,7 +25,7 @@ jobs:
       uses: actions/checkout@v1
 
     - name: 🍒ALL ZIP
-      run : zip -r ${{ env.DEPLOY_PACKAGE_NAME }}.zip ./ -x "*.git*"     
+      run : 1zip -r ${{ env.DEPLOY_PACKAGE_NAME }}.zip ./ -x "*.git*"     
        
     - name: 🍒List corrent dir
       run : |
@@ -42,7 +42,7 @@ jobs:
             curl -s -X POST \
             https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage \
             -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
-            -d text="❌ Err Master🍒 ${TIME}" 
+            -d text="❌ Err Master🍒%0A ${TIME}" 
         
   JOB_CD:                                 # Deploy
     runs-on: ubuntu-latest                # Выполнить в контейнере Linux
@@ -56,6 +56,6 @@ jobs:
             curl -s -X POST \
             https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage \
             -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
-            -d text="☘ Push Master%0A🍒 ${TIME}" 
+            -d text="☘ Push Master🍒%0A ${TIME}" 
 
 
