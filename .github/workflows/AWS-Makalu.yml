@@ -21,7 +21,7 @@ on:                                             # Когда срабатыва�
     branches: 
       - master                                  # Ветка
 jobs:
-  JOB_CI:                                       # Test
+  JOB_CI:                                       # Job name
     runs-on : ubuntu-latest                     # Выполнить в контейнере Linux
     steps   :
     - name  : 🍒Git Clone my Repo               # CHECKOUT
@@ -56,7 +56,7 @@ jobs:
                 -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
                 -d text="☘ OK JOB_CI 🍒%0A ${TIME}" 
         
-  JOB_CD    :                                   # Deploy to AWS
+  JOB_CD    :                                   # Job name
     runs-on : ubuntu-latest                     # Выполнить в контейнере Linux
     needs   : [JOB_CI]                          # Выполнить только если задании JOB_CI success
     steps   :
