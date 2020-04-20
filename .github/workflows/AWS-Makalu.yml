@@ -2,11 +2,7 @@
 # GitHub Action Part 1
 # AWS-Makalu
 # 💥 ✅ ❌ 🍒🍓☘🌹💚
-# 👨‍🎓👨‍🏫👨‍🔬👨‍🔧👌👨☯☯👌👨☝✌‍✔️❌
-# AAA=$(printf "✔ Status\n") # Форматирование
-# IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/${IMAGE_NAME}
 # $ docker ps -q | xargs  docker stats --no-stream # использование памяти и CPU всех Docker
-# 
 #----------------------------------------------------
 
 name: CI_AWS-Makalu
