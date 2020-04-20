@@ -12,7 +12,7 @@ name: CI_AWS-Makalu
   
 env:
   APPLICATION_NAME    : "APPLICATION_NAME"
-  DEPLOY_PACKAGE_NAME : "AWS_Deploy-ver-${{ github.sha }}"
+  DEPLOY_PACKAGE_NAME : "AWS_Deploy-ver-${{ github.sha }}---${{ echo \"777\" }} "
   TELEGRAM_TOKEN      : "1082481725:AAEraZTXO5Wjq4tYmT0O68KWlgUpsn0coa0"
   TELEGRAM_CHAT_ID    : "954432616"
 
@@ -54,7 +54,7 @@ jobs:
                 curl -s -X POST \
                 https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage \
                 -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
-                -d text="☘ OK JOB_CI 🍒%0A ${TIME} ${AAA}" 
+                -d text="☘ OK JOB_CI 🍒%0A ${TIME}" 
         
   JOB_CD    :                                   # Deploy to AWS
     runs-on : ubuntu-latest                     # Выполнить в контейнере Linux
