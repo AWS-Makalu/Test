@@ -1,7 +1,7 @@
 #----------------------------------------------------
 # GitHub Action Part 1
 # AWS-Makalu
-# 💥 ✅ ❌ 🍒🍓☘🌹💚  ‍🎓👨🏻‍🎓
+# 💥 ✅ ❌ 🍒🍓☘🌹💚👨‍🎓 👨 🎓👨🏻‍🎓
 # $ docker ps -q | xargs  docker stats --no-stream # использование памяти и CPU всех Docker
 #----------------------------------------------------
 
@@ -64,6 +64,6 @@ jobs:
                 curl -s -X POST \
                 https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage \
                 -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
-                -d text="☘️ AWS-Makalu 🍒‍🎓👨🏻‍🎓%0A       Deploy AWS %0A ${TIME}" 
+                -d text="☘️ AWS-Makalu 🍒%0A       Deploy AWS %0A ${TIME}" 
 
 
