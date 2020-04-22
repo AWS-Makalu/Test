@@ -40,7 +40,7 @@ jobs:
                 curl -s -X POST \
                 https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage \
                 -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
-                -d text="❌ AWS-Makalu 🍒%0A        JOB_CI %0A ${TIME}" 
+                -d text="❌ AWS-Makalu 🍒%0A          JOB_CI %0A ${TIME}" 
              
   JOB_CD    :                                   # Job name
     runs-on : ubuntu-latest                     # Выполнить в контейнере Linux
