@@ -43,7 +43,7 @@ jobs:
                 -d text="❌ AWS-Makalu 🍒%0A           JOB_CI %0A ${TIME}" 
              
   JOB_CD    :                                   # Job name
-    runs-on : ubuntu-latest                     # Выполнить в контейнере Linux
+    runs-on : ubuntu-latest                     # Выполнить в контейнере Linux 
     needs   : [JOB_CI]                          # Выполнить только если задании JOB_CI success
     steps   :
     - name  : 🍒If error Deploy                 # Выполнить только если Error
