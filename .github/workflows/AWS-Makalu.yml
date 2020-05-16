@@ -1,6 +1,8 @@
 #----------------------------------------------------
 # GitHub Action Part 1
 # AWS-Makalu
+# Мироненко О.И. 𝛀
+# 2020-02-26 начало
 # 💥 ✅ ❌ 🍒🍓☘🌹💚 👨🏻‍🎓
 # $ docker ps -q | xargs  docker stats --no-stream # использование памяти и CPU всех Docker
 #----------------------------------------------------
@@ -14,14 +16,14 @@ env:
   TELEGRAM_CHAT_ID    : "954432616"
 
 on:                                             # Когда срабатывать
-  push:
+  push:                                         # При Push
     branches: 
-      - master                                  # Ветка
-jobs:
-  JOB_CI:                                       # Job name
+      - master                                  # Ветка на которую срабатывает
+jobs:                                           # Перечень работ 
+  JOB_CI:                                       # Job CI
     runs-on : ubuntu-latest                     # Выполнить в контейнере Linux
-    steps   :
-    - name  : 🍒Git Clone my Repo               # CHECKOUT
+    steps   :                                   # Шаги в работе
+    - name  : 🍒Git Clone my Repo               # CHECKOUT Клонируем
       uses  : actions/checkout@v1
 
     - name  : 🍒ALL ZIP
@@ -32,8 +34,8 @@ jobs:
                 ls -la
                 printf "🍒\033[1;33m Status:${{ job.status }}\033[0m \n"
      
-    - name  : 🍒If error JOB_CI                 # Выполнить только если Error
-      if    : failure()   
+    - name  : 🍒If error JOB_CI                 
+      if    : failure()                         # Выполнить шаг только если были ошибки в предыдущих шагах
       run   : |
                 TIME=$(TZ=MSK-3 date "+%d.%m.%Y_%H:%M:%S") # Формируем дату время
                 #------------------- Telegram ----------------------
@@ -43,12 +45,12 @@ jobs:
                 -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
                 -d text="❌ AWS-Makalu 🍒%0A           JOB_CI %0A ${TIME}" 
              
-  JOB_CD    :                                   # Job name
+  JOB_CD    :                                   # Job CD
     runs-on : ubuntu-latest                     # Выполнить в контейнере Linux 
-    needs   : [JOB_CI]                          # Выполнить только если задании JOB_CI success
+    needs   : [JOB_CI]                          # Выполнять работу только если задании JOB_CI закончено без ошибок
     steps   :
-    - name  : 🍒If error Deploy                 # Выполнить только если Error
-      if    : failure()   
+    - name  : 🍒If error Deploy                 
+      if    : failure()                         # Выполнить шаг только если были ошибки в предыдущих шагах (steps!)
       run   : |
                 TIME=$(TZ=MSK-3 date "+%d.%m.%Y_%H:%M:%S") # Формируем дату время
                 #------------------- Telegram ----------------------
@@ -58,8 +60,8 @@ jobs:
                 -d chat_id=${{ env.TELEGRAM_CHAT_ID }} \
                 -d text="❌ AWS-Makalu 🍒%0A           JOB_CD %0A ${TIME}" 
                  
-    - name  : 🍒If OK Deploy                    # Выполнить только если OK Deploy        
-      if    : success()                            
+    - name  : 🍒If OK Deploy                           
+      if    : success()                         # Выполнить шаг только если в предыдущих шагах ошибок не было (steps!)   
       run   : |
                 TIME=$(TZ=MSK-3 date "+%d.%m.%Y_%H:%M:%S") # Формируем дату время
                 #------------------- Telegram ----------------------
